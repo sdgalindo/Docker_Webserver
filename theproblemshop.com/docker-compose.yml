@@ -14,6 +14,8 @@ services:
     expose:
       - 80
     restart: unless-stopped
+    volumes:
+      - wp_data_theproblemshop:/var/www/html
   mdb_theproblemshop:
     image: mariadb
     restart: unless-stopped
@@ -21,9 +23,10 @@ services:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: wordpress
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data_theproblemshop:/var/lib/mysql
 volumes:
-  db_data:
+  db_data_theproblemshop:
+  wp_data_theproblemshop:
 
 networks:
   default:

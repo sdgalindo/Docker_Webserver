@@ -3,30 +3,30 @@ services:
   wp:
     image: wordpress:latest
     depends_on:
-      - mdb_16thstreetbeachretreat
+      - mdb_106antlerway
     environment:
-      - VIRTUAL_HOST=16thstreetbeachretreat.com
+      - VIRTUAL_HOST=106antlerway.date
       - VIRTUAL_PORT=80
-      - WORDPRESS_DB_HOST=mdb_16thstreetbeachretreat:3306
+      - WORDPRESS_DB_HOST=mdb_106antlerway:3306
       - WORDPRESS_DB_PASSWORD=password
-      - LETSENCRYPT_HOST=16thstreetbeachretreat.com
+      - LETSENCRYPT_HOST=106antlerway.date
       - LETSENCRYPT_EMAIL=scdgalindo@gmail.com 
     expose:
       - 80
     restart: unless-stopped
     volumes:
-      - wp_data_16thstreetbeachretreat:/var/www/html
-  mdb_16thstreetbeachretreat:
+      - wp_data_106antlerway:/var/www/html
+  mdb_106antlerway:
     image: mariadb
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: wordpress
     volumes:
-      - db_data_16thstreetbeachretreat:/var/lib/mysql
+      - db_data_106antlerway:/var/lib/mysql
 volumes:
-  db_data_16thstreetbeachretreat:
-  wp_data_16thstreetbeachretreat:
+  db_data_106antlerway:
+  wp_data_106antlerway:
 
 networks:
   default:

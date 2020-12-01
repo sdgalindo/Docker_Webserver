@@ -1,0 +1,30 @@
+version: '3.3'
+services:
+  wordpress:
+      image: wordpress
+      links:
+       - mariadb_theproblemshop:mysql
+      depends_on: 
+       - mariadb_theproblemshop
+      environment:
+       - WORDPRESS_DB_PASSWORD=password
+       - VIRTUAL_HOST=blog.theproblemshop.com
+       - WORDPRESS_DB_HOST=mariadb_theproblemshop:3306
+      expose:
+       - 80
+      volumes:
+       - ./html:/var/www/html
+  mariadb_theproblemshop:
+      container_name: mariadb_theproblemshop
+      image: mariadb
+      restart: always
+      environment:
+       - VIRTUAL_HOST=blog.theproblemshop.com
+       - MYSQL_ROOT_PASSWORD=password
+       - MYSQL_DATABASE=wordpress
+      volumes:
+       - ./database:/var/lib/mysql
+networks:
+  default:
+    external:
+      name: nginx-proxy
