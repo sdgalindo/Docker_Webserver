@@ -9,7 +9,7 @@ services:
       - VIRTUAL_PORT=80
       - WORDPRESS_DB_HOST=mdb_16thstreetbeachretreat:3306
       - WORDPRESS_DB_PASSWORD=password
-      - LETSENCRYPT_HOST=16thstreetbeachretreat.com.com
+      - LETSENCRYPT_HOST=16thstreetbeachretreat.com
       - LETSENCRYPT_EMAIL=scdgalindo@gmail.com 
     expose:
       - 80
